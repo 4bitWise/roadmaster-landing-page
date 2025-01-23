@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 174, 215, 51;
+  --secondary: 135, 169, 34;
+  --accent: 62, 188, 229;
+  --background: 255, 255, 255;
+  --foreground: 37, 37, 37;
+}
+
+.dark {
+  --background: 37, 37, 37;
+  --foreground: 255, 255, 255;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    90deg,
+    #AED733 0%,
+    #87A922 100%
+  );
+}
+
+.hero-gradient-darker {
+  background: linear-gradient(90deg, #87A922 0%, #6C881B 100%);
+}
+
+.blue-gradient {
+  background: linear-gradient(90deg, #34a2c7 0%, #30829E 100%);
+}
+
+.blue-gradient-darker {
+  background: linear-gradient(90deg, #318ba9 0%, #2B6D88 100%);
+}
+
+.feature-card {
+  @apply p-6 rounded-xl bg-white dark:bg-neutral-800 shadow-lg transition-transform duration-300 hover:scale-105;
+}
+
+.cta-button {
+  @apply px-8 py-3 rounded-full font-semibold text-white transition-all duration-300 hover:scale-105;
+}
+
+.primary-button {
+  background: rgb(var(--primary));
+}
+
+.secondary-button {
+  background: rgb(var(--secondary));
+}
+
+@keyframes shine {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shine {
+  animation: shine 2s infinite;
+  opacity: 0.7;
+}
