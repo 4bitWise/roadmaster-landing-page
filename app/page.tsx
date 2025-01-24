@@ -9,14 +9,14 @@ import {
   Clock, 
   Headphones, 
   RefreshCw,
-  Download,
   ChevronLeft,
   ChevronRight,
   Moon,
   Sun,
   Globe,
   GraduationCap,
-  CheckCircle
+  CheckCircle,
+  Send
 } from 'lucide-react';
 
 // Composant Header
@@ -97,11 +97,23 @@ const Hero = () => {
             </p>
             <div className="flex flex-wrap gap-4">
               <button className="cta-button bg-white hover:bg-gray-50 !text-black">
-                <Download className="w-5 h-5 inline-block mr-2" />
+                <Image
+                  src="/google-play.png"
+                  alt="Google Play"
+                  width={20}
+                  height={20}
+                  className="inline-block mr-2"
+                />
                 Télécharger sur Android
               </button>
               <button className="cta-button bg-white hover:bg-gray-50 !text-black">
-                <Download className="w-5 h-5 inline-block mr-2" />
+                <Image
+                  src="/app-store.png"
+                  alt="App Store"
+                  width={20}
+                  height={20}
+                  className="inline-block mr-2"
+                />
                 Télécharger sur iOS
               </button>
             </div>
@@ -181,29 +193,29 @@ const Features = () => {
 const Pricing = () => {
   const commonBenefits = [
     "Accès à tous les chapitres du code de la route",
-    "920+ questions officielles",
-    "Exercices d'entraînement illimités",
-    "Suivi de progression personnalisé",
-    "Sessions d'entraînement sur mesure"
+    "900+ questions officielles",
+    "Exercices d'entraînement et examens blancs",
+    "Suivi de progression par les moniteurs",
+    "Sessions d'entraînement en conditions réelles"
   ];
 
   const plans = [
     {
       duration: "03 Mois",
       price: "3000 FCFA",
-      buttonClass: "blue-gradient hover:blue-gradient-darker",
+      buttonClass: "hero-gradient hover:hero-gradient-darker",
       highlightClass: "from-[#AED733]/20 to-[#87A922]/20"
     },
     {
       duration: "06 Mois",
       price: "6000 FCFA",
-      buttonClass: "blue-gradient hover:blue-gradient-darker",
+      buttonClass: "hero-gradient hover:hero-gradient-darker",
       highlightClass: "from-[#AED733]/20 to-[#87A922]/20"
     },
     {
       duration: "12 Mois",
       price: "8000 FCFA",
-      buttonClass: "blue-gradient hover:blue-gradient-darker",
+      buttonClass: "hero-gradient hover:hero-gradient-darker",
       highlightClass: "from-[#AED733]/20 to-[#87A922]/20"
     }
   ];
@@ -257,31 +269,85 @@ const Pricing = () => {
   );
 };
 
-// Composant DownloadSection
-// const DownloadSection = () => {
-//   return (
-//     <section className="py-16 hero-gradient">
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-//         <h2 className="text-3xl font-bold text-white mb-8">
-//           Téléchargez Maintenant
-//         </h2>
-//         <p className="text-xl text-white/90 mb-8">
-//           Disponible sur le Play Store et l'App Store
-//         </p>
-//         <div className="flex flex-wrap justify-center gap-4">
-//           <button className="cta-button bg-white hover:bg-gray-50 !text-black">
-//             <Download className="w-5 h-5 inline-block mr-2" />
-//             Télécharger sur Android
-//           </button>
-//           <button className="cta-button bg-white hover:bg-gray-50 !text-black">
-//             <Download className="w-5 h-5 inline-block mr-2" />
-//             Télécharger sur iOS
-//           </button>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
+// Composant Contact
+const Contact = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const subject = formData.get('subject') as string;
+    const message = formData.get('message') as string;
+
+    // Préparer le corps du message avec le nom et l'email de l'expéditeur
+    const mailBody = `De: ${name} (${email})\n\n${message}`;
+    
+    // Créer l'URL mailto avec tous les paramètres
+    const mailtoUrl = `mailto:abitwise.team@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`;
+    
+    // Ouvrir le client mail par défaut
+    window.location.href = mailtoUrl;
+  };
+
+  return (
+    <section id="contact" className="py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-center mb-8">
+          Contactez nous ici !
+        </h2>
+        <p className="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+          Partagez vos idées ou vos préoccupations. L'équipe technique vous répondra dans les plus brefs délais.
+        </p>
+        
+        <div className="max-w-2xl mx-auto">
+          <form onSubmit={handleSubmit} className="space-y-6 bg-neutral-900 rounded-xl p-8">
+            <div className="grid grid-cols-1 gap-6">
+              <input
+                type="text"
+                name="name"
+                placeholder="Nom"
+                required
+                className="w-full px-4 py-3 rounded-lg bg-neutral-800 border-transparent focus:border-primary focus:ring-0 text-white placeholder-gray-400"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                className="w-full px-4 py-3 rounded-lg bg-neutral-800 border-transparent focus:border-primary focus:ring-0 text-white placeholder-gray-400"
+              />
+              <input
+                type="text"
+                name="subject"
+                placeholder="Sujet"
+                required
+                className="w-full px-4 py-3 rounded-lg bg-neutral-800 border-transparent focus:border-primary focus:ring-0 text-white placeholder-gray-400"
+              />
+              <textarea
+                name="message"
+                placeholder="Votre message..."
+                rows={4}
+                required
+                className="w-full px-4 py-3 rounded-lg bg-neutral-800 border-transparent focus:border-primary focus:ring-0 text-white placeholder-gray-400"
+              />
+            </div>
+            
+            <div className="text-right">
+              <button
+                type="submit"
+                className="hero-gradient hover:hero-gradient-darker text-white px-8 py-3 rounded-full font-semibold inline-flex items-center"
+              >
+                Envoyer
+                <Send className="w-4 h-4 ml-2" />
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // Composant Footer
 const Footer = () => {
@@ -363,7 +429,7 @@ export default function Home() {
       <Hero />
       <Features />
       <Pricing />
-      {/* <DownloadSection /> */}
+      <Contact />
       <Footer />
     </main>
   );
