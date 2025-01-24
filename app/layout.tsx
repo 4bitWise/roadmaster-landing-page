@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { Toaster as ReactHotToastToaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,7 +28,8 @@ export default function RootLayout({
           storageKey="roadmaster-theme"
         >
           {children}
-          <Toaster />
+          {/* <Toaster /> */}
+          <ReactHotToastToaster position="bottom-right" />
         </ThemeProvider>
       </body>
     </html>

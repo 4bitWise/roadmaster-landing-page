@@ -18,6 +18,7 @@ import {
   CheckCircle,
   Send
 } from 'lucide-react';
+import { handleContactSubmit } from './contact';
 
 // Composant Header
 const Header = () => {
@@ -203,19 +204,19 @@ const Pricing = () => {
     {
       duration: "03 Mois",
       price: "3000 FCFA",
-      buttonClass: "hero-gradient hover:hero-gradient-darker",
+      buttonClass: "hero-gradient hover:hero-gradient-darker transition-all",
       highlightClass: "from-[#AED733]/20 to-[#87A922]/20"
     },
     {
       duration: "06 Mois",
       price: "6000 FCFA",
-      buttonClass: "hero-gradient hover:hero-gradient-darker",
+      buttonClass: "hero-gradient hover:hero-gradient-darker transition-all",
       highlightClass: "from-[#AED733]/20 to-[#87A922]/20"
     },
     {
       duration: "12 Mois",
       price: "8000 FCFA",
-      buttonClass: "hero-gradient hover:hero-gradient-darker",
+      buttonClass: "hero-gradient hover:hero-gradient-darker transition-all",
       highlightClass: "from-[#AED733]/20 to-[#87A922]/20"
     }
   ];
@@ -271,25 +272,6 @@ const Pricing = () => {
 
 // Composant Contact
 const Contact = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const subject = formData.get('subject') as string;
-    const message = formData.get('message') as string;
-
-    // Préparer le corps du message avec le nom et l'email de l'expéditeur
-    const mailBody = `De: ${name} (${email})\n\n${message}`;
-    
-    // Créer l'URL mailto avec tous les paramètres
-    const mailtoUrl = `mailto:abitwise.team@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`;
-    
-    // Ouvrir le client mail par défaut
-    window.location.href = mailtoUrl;
-  };
-
   return (
     <section id="contact" className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -301,7 +283,7 @@ const Contact = () => {
         </p>
         
         <div className="max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6 bg-neutral-900 rounded-xl p-8">
+          <form onSubmit={handleContactSubmit} className="space-y-6 bg-neutral-900 rounded-xl p-8">
             <div className="grid grid-cols-1 gap-6">
               <input
                 type="text"
@@ -327,7 +309,7 @@ const Contact = () => {
               <textarea
                 name="message"
                 placeholder="Votre message..."
-                rows={4}
+                rows={6}
                 required
                 className="w-full px-4 py-3 rounded-lg bg-neutral-800 border-transparent focus:border-primary focus:ring-0 text-white placeholder-gray-400"
               />
@@ -336,7 +318,7 @@ const Contact = () => {
             <div className="text-right">
               <button
                 type="submit"
-                className="hero-gradient hover:hero-gradient-darker text-white px-8 py-3 rounded-full font-semibold inline-flex items-center"
+                className="hero-gradient hover:hero-gradient-darker text-white px-8 py-3 rounded-full font-semibold inline-flex items-center transition-all"
               >
                 Envoyer
                 <Send className="w-4 h-4 ml-2" />

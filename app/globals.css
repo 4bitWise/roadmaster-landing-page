@@ -29,7 +29,7 @@
   );
 }
 
-.hero-gradient-darker {
+.hero-gradient:hover {
   background: linear-gradient(90deg, #87A922 0%, #6C881B 100%);
 }
 
