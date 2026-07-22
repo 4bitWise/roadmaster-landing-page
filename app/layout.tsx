@@ -8,9 +8,11 @@ import { Toaster as ReactHotToastToaster } from 'react-hot-toast';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Roadmaster - Préparez votre permis en Afrique de l\'Ouest',
-  description: 'Application mobile pour préparer votre permis de conduire en Afrique de l\'Ouest avec 930 questions, des examens blancs et un support audio.',
-  keywords: 'permis de conduire, Afrique de l\'Ouest, code Rousseau, examen blanc, apprentissage audio',
+  title: "Roadmaster - Préparez votre permis en Afrique de l'Ouest",
+  description:
+    "Application mobile pour préparer votre permis de conduire en Afrique de l'Ouest avec 920 questions, des examens blancs et un accompagnement moniteur.",
+  keywords:
+    "permis de conduire, Afrique de l'Ouest, code Rousseau, examen blanc, Roadmaster",
 };
 
 export default function RootLayout({
