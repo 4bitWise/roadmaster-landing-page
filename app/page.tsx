@@ -298,7 +298,7 @@ const Pricing = () => {
                 href="#contact"
                 className="hero-gradient hover:hero-gradient-darker transition-all text-white px-6 py-3 rounded-full w-full font-bold text-xl text-center mt-auto"
               >
-                {plan.price} — Nous contacter
+                {plan.price}
               </a>
             </motion.div>
           ))}
