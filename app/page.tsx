@@ -17,6 +17,7 @@ import {
   Send,
 } from 'lucide-react';
 import { handleContactSubmit } from './contact';
+import { assetPath } from '@/lib/asset-path';
 
 const STORE_ANDROID =
   'https://play.google.com/store/apps/details?id=com.abitwise.roadmaster';
@@ -38,7 +39,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <a href="#accueil" className="flex items-center space-x-4">
             <Image
-              src="/app-icon.png"
+              src={assetPath('/app-icon.png')}
               alt="Logo Roadmaster"
               width={40}
               height={40}
@@ -121,7 +122,7 @@ const Hero = () => {
     <section id="accueil" className="pt-24 pb-16 relative">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero.png"
+          src={assetPath('/hero.png')}
           alt=""
           fill
           className="object-cover"
@@ -150,7 +151,7 @@ const Hero = () => {
                 className="cta-button bg-white hover:bg-gray-50 !text-black"
               >
                 <Image
-                  src="/google-play.png"
+                  src={assetPath('/google-play.png')}
                   alt=""
                   width={20}
                   height={20}
@@ -166,7 +167,7 @@ const Hero = () => {
                 className="cta-button bg-white hover:bg-gray-50 !text-black"
               >
                 <Image
-                  src="/app-store.png"
+                  src={assetPath('/app-store.png')}
                   alt=""
                   width={20}
                   height={20}
@@ -186,7 +187,7 @@ const Hero = () => {
           >
             <div className="relative w-full h-[600px]">
               <Image
-                src="/interface_moniteur_roadmaster.png"
+                src={assetPath('/interface_moniteur_roadmaster.png')}
                 alt="Interface moniteur de l'application Roadmaster"
                 fill
                 className="object-contain"
@@ -403,7 +404,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-4 mb-4">
               <Image
-                src="/app-icon.png"
+                src={assetPath('/app-icon.png')}
                 alt="Logo Roadmaster"
                 width={40}
                 height={40}
